@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tads6_patrick (0.1.0)
+    tads6_patrick (0)
 
 GEM
   remote: https://rubygems.org/

@@ -3,7 +3,8 @@ RSpec.describe Tads6Patrick do
     expect(Tads6Patrick::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(false)
+  it "Deveria mostrar as palavras Hello World" do
+    x = Tads6Patrick::HelloWorld.new
+    expect(x.say).to eq("Hello World")  # expect = espero que isso ...
   end
 end
