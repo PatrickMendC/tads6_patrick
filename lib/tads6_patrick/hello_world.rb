@@ -4,7 +4,7 @@ module Tads6Patrick
       "Hello World"
     end
     def sayPalavra(palavra)
-      "#{palavra}"
+      palavra
     end
   end
 end
