@@ -3,5 +3,8 @@ module Tads6Patrick
     def say
       "Hello World"
     end
+    def sayPalavra(palavra)
+      "#{palavra}"
+    end
   end
 end
