@@ -62,6 +62,8 @@ Segue exemplo para cada caso:
 ```ruby
 Bolo.criar(titulo:'Formigueiro')
 ```
+OBS: Ao rodarmos o código acima, o seguinte caminho será gerado na pasta raiz do arquivo em execução: `db/bolo`
+O nome da segunda pasta do caminho, dependerá do nome da classe usada. De uma forma ou de outra, os objetos serializados podem ser encontrados dentro deste.
 
 ###Listar
 ```ruby
