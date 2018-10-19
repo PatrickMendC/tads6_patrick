@@ -1,6 +1,7 @@
 module Tads6Patrick
   class ORM
     def self.criar(*atributos)
+      FileUtils.mkdir_p "#{path}"#caso o caminho especificado no path nao exista, este é criado
       id = proximo_id
       File.open("#{path}/#{id}.yml", "a") do |arquivo|
         obj = self.new atributos
