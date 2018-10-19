@@ -1,43 +1,106 @@
 # Tads6Patrick
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tads6_patrick`. To experiment with that code, run `bin/console` for an interactive prompt.
+Seja bem vindo ao tads6_patrick, gem para auxilia-lo na serialização e desserialização de objetos! Para tanto, a gem lhe desponibila uma biblioteca básica com CRUD.
 
-TODO: Delete this and the text above, and describe your gem
+Segue abaixo, as instruções de instalação e uso desta gem.
 
-## Installation
+## Instalação
 
-Add this line to your application's Gemfile:
+Adicione esta linha em seu aplicativo de Gemfile:
 
 ```ruby
 gem 'tads6_patrick'
 ```
 
-And then execute:
+E então execute:
 
     $ bundle
 
-Or install it yourself as:
+Ou instale com:
 
     $ gem install tads6_patrick
 
-## Usage
+## Como Usar - Parte 1
 
-TODO: Write usage instructions here
+Após instalada a gem, o próximo passo é ir no arquivo o qual se tem a necessidade de uso da biblioteca, e digitar o seguinte comando no topo deste:
 
-## Development
+```ruby
+require 'tads6_patrick'
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+No próximo passo, se deve atribuir por herança em nossa classe, O nome do modulo e biblioteca `Tads6Patrick::ORM`.
+Veja abaixo como deve estar nosso arquivo.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+require 'tads6_patrick'
+class Bolo < Tads6Patrick::ORM
+end  
+```
+Só com o código disposto acima, ainda não temos o programa funcional. Para que funcione, é necessário ter uma `id` e `initializable`.
 
-## Contributing
+```ruby
+require 'tads6_patrick'
+class Bolo < Tads6Patrick::ORM
+  attr_accessor :id, :titulo
+  def initialize(atributos)
+    		@titulo = atributos.first[:titulo]
+  end      
+end  
+```
+## Como Usar - Parte 2: CRUD
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[PatrickMendC]/tads6_patrick. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Para o satisfatório uso da biblioteca, esta tem disponível de forma fácil, as 4 operações do CRUD.
+* Criar
+* Listar
+* Selecionar
+* Atualizar
+* Excluir
 
-## License
+Segue exemplo para cada caso:
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+###Criar
+```ruby
+Bolo.criar(titulo:'Formigueiro')
+```
 
-## Code of Conduct
+###Listar
+```ruby
+Bolo.listar
+```
+###Selecionar
+```ruby
+Bolo.selecionar(n)
+```
+No exemplo acima, `n` corresponde ao id que queremos selecionar.
+
+###Atualizar
+```ruby
+bolo = Bolo.selecionar(1)
+bolo.titulo = "Quatro Leites"
+Bolo.atualizar(bolo)
+```
+No caso acima, o atualizar é dependente do selecionar, uma vez selecionada a classe, modificamos seu atributo, para então em seguida, atualizar a classe.
+
+###Deletar
+```ruby
+Bolo.deletar(n)
+```
+Acima temos o bolo do id `n` excluido.
+
+## Desenvolvimento
+
+Depois de verificar o repositório, execute o `bin / setup` para instalar dependências. Então, execute `rake spec` para executar os testes. Você também pode executar o `bin / console` para um prompt interativo que permitirá que você experimente.
+
+Para instalar esta gem na sua máquina local, execute `bundle exec rake install`. Para liberar uma nova versão, atualize o número da versão em `version.rb`, e então execute` bundle exec rake release`, que irá criar uma tag git para a versão, push commits git e tags, e pressionar o arquivo `.gem` arquivo para [rubygems.org] (https://rubygems.org).
+
+## Contribuição
+
+Relatórios de bugs e pedidos de pull são bem-vindos no GitHub em https://github.com/[PatrickMendC]/tads6_patrick. Porém, o presente projeto destina-se a ser material de avaliação pelo professor da disciplina de Frameworks.
+
+## Licença
+
+A gem está disponível como código aberto sob os termos da [MIT License](https://opensource.org/licenses/MIT).
+
+## Codigo de Conduta
 
 Everyone interacting in the Tads6Patrick project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tads6_patrick/blob/master/CODE_OF_CONDUCT.md).
